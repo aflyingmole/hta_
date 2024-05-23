@@ -2,7 +2,8 @@ package connectionEx01;
 
 import java.sql.*;
 
-public class ConnectionTest {
+public class Statement06 {
+
     public static void main(String[] args) {
         System.out.println("시작");
 
@@ -23,16 +24,17 @@ public class ConnectionTest {
 
             stmt = conn.createStatement();
 
-            String sql = String.format("SELECT empno, ename, sal, sal * 12 + ifnull(comm,0) AS annsal FROM emp WHERE deptno = 10");
+            String sql = String.format("select * from dept2");
             rs = stmt.executeQuery(sql);
 
+            // 끝까지 읽기
             while(rs.next()) {
-                int empno = rs.getInt("empno");
-                String ename = rs.getString("ename");
-                int sal = rs.getInt("sal");
-                int annsal = rs.getInt("annsal");
+                System.out.printf("%s\t%s\t%s%n",rs.getString("deptno"),rs.getString("dname"),rs.getString("loc"));
+            }
 
-                System.out.printf("사원번호: %d, 사원이름: %s, 급여: %d, annsal: %d%n", empno, ename, sal, annsal);
+            // 한줄 읽기
+            if(rs.next()){
+                System.out.printf("%s\t%s\t%s%n",rs.getString("deptno"),rs.getString("dname"),rs.getString("loc"));
             }
 
         } catch (ClassNotFoundException e) {

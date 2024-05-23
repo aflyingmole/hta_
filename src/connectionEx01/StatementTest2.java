@@ -1,12 +1,9 @@
 package connectionEx01;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
+import java.util.Date;
 
-public class ConnectionEx05 {
-
+public class StatementTest2 {
     public static void main(String[] args) {
         System.out.println("시작");
 
@@ -16,6 +13,7 @@ public class ConnectionEx05 {
 
         Connection conn = null;
         Statement stmt = null;
+        ResultSet rs = null;
 
         try {
             Class.forName("org.mariadb.jdbc.Driver");
@@ -26,21 +24,28 @@ public class ConnectionEx05 {
 
             stmt = conn.createStatement();
 
-            String deptno = "52";
-            String dname = "연구부";
-            String loc = "대전";
+            String sql = String.format("SELECT empno, ename, sal, hiredate FROM emp ");
+            rs = stmt.executeQuery(sql);
 
-            //String sql = "insert into dept2 values(" +deptno+ ",'"+dname+"','"+loc+"')";
-            String sql = String.format("insert into dept2 values(%s, '%s', '%s')", deptno, dname, loc);
-            //System.out.println(sql);  //테스트 후 실행
-            stmt.executeUpdate(sql);
+            while(rs.next()) {
+                int empno = rs.getInt("empno");
+                String ename = rs.getString("ename");
+                int sal = rs.getInt("sal");
+                Date hiredate = rs.getDate("hiredate");
 
-            System.out.println("입력 완료");
+                String formattedHiredate = hiredate.toString().replace("-", "/");
+
+
+
+                System.out.printf("사원번호: %d, 사원이름: %s, 급여: %d,입사일자: %s%n", empno, ename, sal, formattedHiredate);
+            }
+
         } catch (ClassNotFoundException e) {
             System.out.println("[에러]" + e.getMessage());
         } catch (SQLException e) {
             System.out.println("[에러]" + e.getMessage());
         } finally {
+            if(rs != null)try{rs.close();}catch(SQLException e){}
             if(stmt != null)try{stmt.close();}catch(SQLException e){}
             if(conn != null)try{conn.close();}catch(SQLException e){}
         }

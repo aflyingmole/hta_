@@ -2,7 +2,7 @@ package connectionEx01;
 
 import java.sql.*;
 
-public class ConnectionEx08 {
+public class Statement05 {
 
     public static void main(String[] args) {
         System.out.println("시작");
