@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class ConnectionEx04 {
+public class ConnectionEx06 {
 
     public static void main(String[] args) {
         System.out.println("시작");
@@ -25,9 +25,17 @@ public class ConnectionEx04 {
             System.out.println("데이터베이스 연결 성공") ;
 
             stmt = conn.createStatement();
-            stmt.executeUpdate("insert into dept2 values(51,'개발부','서울')");
 
-            System.out.println("입력 완료");
+            // executeUpdate - select의 전부
+            // executeQuery - select
+
+            //String sql = String.format("update dept2 set loc='%s'", "부산");
+            String sql = String.format("delete from dept2 where deptno='%s'", "52");
+            //System.out.println(sql);
+            int result = stmt.executeUpdate(sql);
+
+            //System.out.println("수정 완료 : " + result);
+            System.out.println("삭제 완료 : " + result);
         } catch (ClassNotFoundException e) {
             System.out.println("[에러]" + e.getMessage());
         } catch (SQLException e) {

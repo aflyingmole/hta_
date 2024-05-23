@@ -33,7 +33,7 @@ public class ConnectionEx05 {
             //String sql = "insert into dept2 values(" +deptno+ ",'"+dname+"','"+loc+"')";
             String sql = String.format("insert into dept2 values(%s, '%s', '%s')", deptno, dname, loc);
             //System.out.println(sql);  //테스트 후 실행
-            stmt.executeQuery(sql);
+            stmt.executeUpdate(sql);
 
             System.out.println("입력 완료");
         } catch (ClassNotFoundException e) {
