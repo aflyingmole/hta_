@@ -1,8 +1,9 @@
 package connectionEx01;
 
 import java.sql.*;
+import java.util.Date;
 
-public class StatementTest {
+public class Statement08 {
     public static void main(String[] args) {
         System.out.println("시작");
 
@@ -23,16 +24,22 @@ public class StatementTest {
 
             stmt = conn.createStatement();
 
-            String sql = String.format("SELECT empno, ename, sal, sal * 12 + ifnull(comm,0) AS annsal FROM emp WHERE deptno = 10");
+            String sql = String.format("SELECT empno, ename, sal, hiredate FROM emp ");
+
+            // sql적 처리
+            // String sql = "SELECT empno, ename, sal, date_format(hiredate, '%Y%m%d') hiredate FROM emp ";
+
             rs = stmt.executeQuery(sql);
 
             while(rs.next()) {
                 int empno = rs.getInt("empno");
                 String ename = rs.getString("ename");
                 int sal = rs.getInt("sal");
-                int annsal = rs.getInt("annsal");
+                Date hiredate = rs.getDate("hiredate");
 
-                System.out.printf("사원번호: %d, 사원이름: %s, 급여: %d, annsal: %d%n", empno, ename, sal, annsal);
+                String formattedHiredate = hiredate.toString().replace("-", "/");
+
+                System.out.printf("사원번호: %d, 사원이름: %s, 급여: %d,입사일자: %s%n", empno, ename, sal, formattedHiredate);
             }
 
         } catch (ClassNotFoundException e) {
