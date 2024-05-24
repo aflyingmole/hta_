@@ -27,10 +27,18 @@ public class ZipcodeSearchEx01 {
 
             stmt = conn.createStatement();
 
-            String sql = "";
+            String sql = "select zipcode, sido, gugun, dong, ri, bunji from zipcode where dong like '"+args[0]+"%'";
             rs = stmt.executeQuery(sql);
             while(rs.next()){
+                String zipcode = rs.getString("zipcode");
+                String sido = rs.getString("sido");
+                String gugun = rs.getString("gugun");
+                String dong = rs.getString("dong");
+                String ri = rs.getString("ri");
+                String bunji = rs.getString("bunji");
 
+                String result = String.format("[%s]%s %s %s %s %s", zipcode, sido, gugun, dong, ri, bunji);
+                System.out.println(result);
             }
         } catch (ClassNotFoundException e) {
             System.out.println("[에러] : " + e.getMessage());
