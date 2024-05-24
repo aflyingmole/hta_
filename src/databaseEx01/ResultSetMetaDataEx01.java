@@ -27,6 +27,15 @@ public class ResultSetMetaDataEx01 {
 
             System.out.println(rsmd.getTableName(1));
 
+            // 번호 - 컬럼의 순서
+            for (int i = 1; i <=rsmd.getColumnCount() ; i++) {
+                System.out.print(rsmd.getColumnName(i));
+                System.out.print(rsmd.getColumnTypeName(i));
+                System.out.print(rsmd.getPrecision(i));
+                System.out.print(rsmd.getScale(i));
+                System.out.print(rsmd.isNullable(i));
+                System.out.println();
+            }
 
         } catch (ClassNotFoundException e) {
             System.out.println("[에러] : " + e.getMessage());
