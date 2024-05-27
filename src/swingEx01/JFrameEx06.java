@@ -1,6 +1,7 @@
 package  swingEx01;
 
 import javax.swing.*;
+import java.awt.*;
 
 public class JFrameEx06 {
     private JPanel jPanel;
