@@ -1,7 +1,6 @@
 <component name="libraryTable">
-  <library name="mariadb-java-client-3.1.3">
+  <library name="jsoup-1.17.2">
     <CLASSES>
-      <root url="jar://$PROJECT_DIR$/../../../../java/api/mariadb-java-client-3.1.3.jar!/" />
       <root url="jar://$PROJECT_DIR$/../jsoup-1.17.2.jar!/" />
     </CLASSES>
     <JAVADOC />
