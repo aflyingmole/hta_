@@ -7,7 +7,7 @@ import org.jsoup.select.Elements;
 
 public class JSoupEx02 {
     public static void main(String[] args) {
-        String strHtML = "<html>" +
+        String strHtml = "<html>" +
                 "<head>" +
                 "<title> Hello JSoup</title>" +
                 "</head>" +
@@ -21,7 +21,7 @@ public class JSoupEx02 {
                 "</body>" +
                 "</html>";
 
-        Document doc = Jsoup.parse(strHtML);
+        Document doc = Jsoup.parse(strHtml);
 
         Element pTag = doc.getElementById("i1");
         System.out.println(pTag);
@@ -32,6 +32,5 @@ public class JSoupEx02 {
         for (Element tag : pTags) {
             System.out.println(tag.text());
         }
-
     }
 }
