@@ -18,8 +18,6 @@ public class UrlEx04 {
             while ((line = br.readLine()) != null) {
                 System.out.println(line);
             }
-
-
             br.close();
             isr.close();
             is.close();
