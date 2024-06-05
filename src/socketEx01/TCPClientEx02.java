@@ -1,12 +1,11 @@
-package socketEx02;
+package socketEx01;
 
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.Socket;
 
-public class TCPClientEx01 {
+public class TCPClientEx02 {
     public static void main(String[] args) {
 
         Socket socket = null;

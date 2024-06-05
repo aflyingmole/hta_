@@ -1,4 +1,4 @@
-package socketEx03;
+package socketEx01;
 
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -6,7 +6,7 @@ import java.io.OutputStreamWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-public class TCPClientEx01 {
+public class TCPClientEx03 {
 
     public static void main(String[] args) {
 
